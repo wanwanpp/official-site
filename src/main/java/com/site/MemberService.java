@@ -1,7 +1,7 @@
 package com.site;
 
-import com.site.mapper.MemberMapper;
-import com.site.model.Member;
+import com.site.mapper.login.MemberMapper;
+import com.site.model.login.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

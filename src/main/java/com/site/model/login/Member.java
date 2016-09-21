@@ -1,8 +1,10 @@
-package com.site.model;
+package com.site.model.login;
 
+import com.site.mapper.login.RolesMapper;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,16 +30,23 @@ public class Member implements UserDetails{
     private String loginName;
     private String pwd;
     private int group;
-    private Set<Roles> roles =new HashSet<>();
+    private List<Roles> roles =new ArrayList<Roles>();
+
+
+    @Autowired
+    private RolesMapper rolesMapper;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { //2
         List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-        Set<Roles> roles=this.getRoles();
+        List<Roles> roles=this.getRole();
         for(Roles role:roles){
             auths.add(new SimpleGrantedAuthority(role.getMark()));
         }
         return auths;
+    }
+    public List<Roles> getRole(){
+        return rolesMapper.findByMemberid(this.id);
     }
 
     @Override

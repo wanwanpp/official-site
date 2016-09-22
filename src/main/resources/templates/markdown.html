@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="//cdn.bootcss.com/showdown/1.4.3/showdown.js"></script>
+    <script type="application/javascript">
+        function run() {
+            var text = document.getElementById('sourceTA').value,
+                    target = document.getElementById('targetDiv'),
+                    converter = new showdown.Converter(),
+                    html = converter.makeHtml(text);
+
+            target.innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+
+<textarea id="sourceTA" rows="10" cols="82" oninput="run()"></textarea>
+<hr/>
+<button id="runBtn" oninput="run()">Convert</button>
+<hr/>
+<div id="targetDiv"></div>
+
+</body>
+</html>

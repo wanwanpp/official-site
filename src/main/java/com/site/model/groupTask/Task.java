@@ -21,5 +21,9 @@ public class Task {
     private Integer group;
     private Timestamp startdate;
     private Timestamp enddate;
+    private String memberid;
+    private Integer status;
+    private String taskTitle;
+    private String taskContent;
 
 }

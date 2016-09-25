@@ -1,6 +1,4 @@
 package com.site.controller.sign;
-
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.model.sign.Buqian;
 import com.site.model.sign.Member;
@@ -20,8 +18,8 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
-
 @Controller
+@RequestMapping("/sign")
 public class SignCrol {
 
     @Autowired
@@ -41,7 +39,7 @@ public class SignCrol {
         return members;
     }
 
-    @RequestMapping("/signWork")
+    @RequestMapping("/")
     public String show() {
         return "signWork";
     }

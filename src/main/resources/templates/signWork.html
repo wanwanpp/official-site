@@ -54,7 +54,7 @@
     var app = angular.module('myApp', []);
     app.controller('signCtrl', function ($scope, $http) {
         $scope.fetchUsersList = function () {
-            $http.get("/name")
+            $http.get("/sign/name")
                     .success(function (members) {
                         $scope.members = members;
                     });
@@ -63,7 +63,7 @@
         $scope.fetchUsersList();
 
         $scope.start = function (name) {
-            $http.post("/start", name)
+            $http.post("/sign/start", name)
                     .success(function (message) {
                         $scope.fetchUsersList();
                         $scope.message = message;
@@ -71,7 +71,7 @@
         };
 
         $scope.end = function (name) {
-            $http.post("/end", name)
+            $http.post("/sign/end", name)
                     .success(function (message) {
                         $scope.fetchUsersList();
                         $scope.message = message;
@@ -83,7 +83,7 @@
             console.log()
             $http({
                 method:'post',
-                url:'/buqian',
+                url:'/sign/buqian',
                 data:{name:name,number:date}
             }).success(function (message) {
                 $scope.fetchUsersList();

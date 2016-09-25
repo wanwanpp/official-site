@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -30,11 +31,14 @@ public class IndexCrol {
 
         List<Project> projects = projectMapper.findTopSix();
         List<Awards> awards = awardsMapper.findTopSix();
-
         model.addAttribute("projects",projects);
         model.addAttribute("awards",awards);
-
         return "index";
+    }
 
+    @RequestMapping("/personal")
+    @ResponseBody
+    public String getPersonalPage(){
+        return "personal";
     }
 }

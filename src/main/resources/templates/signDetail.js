@@ -1,6 +1,24 @@
 var app = angular.module('myApp', ['ngAnimate', 'ui.bootstrap']);
 app.controller('signDetailCtrl', function ($scope, $http) {
 
+    var name = $("#span1").val();
+    // $("#nameinput").val(name);
+    // console.log($("#nameinput").val());
+
+    $scope.getData = function (name) {
+
+        var name = $("#span1").val();
+        var starts = $("#firstTime").val();
+        var ends = $("#lastTime").val();
+        $http({
+            method: 'get',
+            url: '/buqian',
+            data: {name: name, starts: starts,ends:ends}
+        }).success(function (signs) {
+            $scope.signs = signs;
+        });
+
+    }
 //日期插件
     $scope.today = function () {
         $scope.dt = new Date();
@@ -81,7 +99,6 @@ app.controller('signDetailCtrl', function ($scope, $http) {
             mode = data.mode;
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -90,7 +107,6 @@ app.controller('signDetailCtrl', function ($scope, $http) {
                 }
             }
         }
-
         return '';
     }
 });

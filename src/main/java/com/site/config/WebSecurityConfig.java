@@ -25,14 +25,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {//1
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .headers().frameOptions().sameOrigin()
-//                .and().authorizeRequests().anyRequest().authenticated()
-//                .and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
-//                .failureUrl("/login?error").permitAll() //bootstrap
-//                .and().rememberMe().key("swpuiot").tokenValiditySeconds(14100).rememberMeParameter("remember_me")
-//                .and().logout().logoutSuccessUrl("/login?logout").permitAll()
-//                .and().csrf().disable(); //6
+        http
+                .headers().frameOptions().sameOrigin()
+                .and().authorizeRequests().anyRequest().authenticated()
+                .and().formLogin().loginPage("/").defaultSuccessUrl("/personal", true)
+                .failureUrl("/").permitAll() //bootstrap
+                .and().rememberMe().key("swpuiot").tokenValiditySeconds(14100).rememberMeParameter("remember_me")
+                .and().logout().logoutSuccessUrl("/login?logout").permitAll()
+                .and().csrf().disable(); //6
 
         http.csrf().disable();
     }

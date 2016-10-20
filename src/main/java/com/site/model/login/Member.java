@@ -1,52 +1,58 @@
 package com.site.model.login;
 
-import com.site.mapper.login.RolesMapper;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.*;
 
-/**
- * Created by wang0 on 2016/9/19.
- */
-
-@Getter
+@Entity
+@Table(name = "member")
 @Setter
-@ToString
-public class Member implements UserDetails{
+@Getter
+public class Member implements UserDetails { //1
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String name;
+    @Id
+    @GeneratedValue
+    private Integer id;
     private Long stuId;
-    private int grade;
-    private String profession;
+
+    @Column(name = "names")
+    private String name;
+    private Integer grade;
     private String loginName;
     private String pwd;
-    private int group;
-    private List<Roles> roles =new ArrayList<Roles>();
+    @Column(name = "groups")
 
+    private Integer group;
+    private Integer isleader;
+    private Integer isstart;
+    private Long recordId;
+    private Integer sex;
+    private String phone;
+    @ManyToMany(mappedBy = "members")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
+    private List<Roles> roles = new ArrayList<Roles>();
 
-    @Autowired
-    private RolesMapper rolesMapper;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() { //2
-        List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-        List<Roles> roles=this.getRole();
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> auths = new ArrayList<SimpleGrantedAuthority>();
+        List<Roles> roles= this.getRoles();
         for(Roles role:roles){
             auths.add(new SimpleGrantedAuthority(role.getMark()));
+            System.out.println(role.getMark());
         }
         return auths;
-    }
-    public List<Roles> getRole(){
-        return rolesMapper.findByMemberid(this.id);
     }
 
     @Override
@@ -75,4 +81,6 @@ public class Member implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
+
 }

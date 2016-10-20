@@ -2,13 +2,11 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8"/>
-    <title>签到显示</title>
-    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <title>签到</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
     <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body ng-controller="signCtrl">
 
@@ -20,8 +18,6 @@
         <th>姓名</th>
         <th>签到</th>
         <th>签退</th>
-        <th>补签</th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -36,16 +32,7 @@
             <button class="btn btn-danger col-lg-offset-2" ng-show="member.isstart==1" ng-click="end(member.name)">签退
             </button>
         </td>
-        <td><select id="buqian+{{$index+1}}">
-            <!--迭代不同的id-->
-            <option value="1">1小时</option>
-            <option value="2">2小时</option>
-            <option value="3">3小时</option>
-            <option value="4">4小时</option>
-        </select>
-            <button class="btn btn-danger col-lg-offset-2" ng-click="buqian(member.name)">提交</button>
-        </td>
-        <td>{{member.status}}</td>
+
     </tr>
     </tbody>
 </table>
@@ -67,6 +54,7 @@
                     .success(function (message) {
                         $scope.fetchUsersList();
                         $scope.message = message;
+                        alert(message);
                     });
         };
 
@@ -75,21 +63,9 @@
                     .success(function (message) {
                         $scope.fetchUsersList();
                         $scope.message = message;
+                        alert(message);
                     });
         };
-
-        $scope.buqian = function (name) {
-            var date = $("#buqian+{{}}").val();
-            console.log()
-            $http({
-                method:'post',
-                url:'/sign/buqian',
-                data:{name:name,number:date}
-            }).success(function (message) {
-                $scope.fetchUsersList();
-                $scope.message = message;
-            });
-        }
     });
 </script>
 </body>

@@ -1,23 +1,29 @@
 var app = angular.module('myApp', ['ngAnimate', 'ui.bootstrap']);
 app.controller('signDetailCtrl', function ($scope, $http) {
 
-    var name = $("#span1").val();
-    // $("#nameinput").val(name);
-    // console.log($("#nameinput").val());
-
-    $scope.getData = function (name) {
-
-        var name = $("#span1").val();
+    $scope.getData = function () {
         var starts = $("#firstTime").val();
         var ends = $("#lastTime").val();
         $http({
             method: 'get',
-            url: '/buqian',
-            data: {name: name, starts: starts,ends:ends}
+            url: '/sign/getData',
+            data: {starts: starts,ends:ends}
         }).success(function (signs) {
             $scope.signs = signs;
         });
+    };
 
+    $scope.buqian = function () {
+
+        var date = $("#dateselect").val();
+        $http({
+            method: 'post',
+            url: '/sign/buqian',
+            data: {name: name, number: date}
+        }).success(function (message) {
+            $scope.fetchUsersList();
+            $scope.message = message;
+        });
     }
 //日期插件
     $scope.today = function () {

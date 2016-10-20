@@ -1,14 +1,12 @@
 package com.site.controller.sign;
 
 
-import com.site.model.sign.Member;
-import com.site.model.sign.ResponseMessage;
 import com.site.repository.MemberRepo;
-import com.site.utils.Global;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -20,18 +18,23 @@ public class MemberCrol {
     @Autowired
     private MemberRepo memberRepo;
 
-    @RequestMapping("/register")
-    @ResponseBody
-    public ResponseMessage reister(@RequestBody Member member){
-
-        if (memberRepo.findByStuId(member.getStuId())==null){
-            memberRepo.save(member);
-            return new ResponseMessage(Global.REGISTER_SUCCESS);
-        }else {
-            return new ResponseMessage(Global.HAVE_REGISTERED);
-        }
+    public String getCurrentUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
+    @RequestMapping("/member/setpwd")
+    public String setPwd(@RequestParam String oldpwd,
+                       @RequestParam String newpwd1,
+                       @RequestParam String newpwd2){
+
+        String name=getCurrentUsername();
+        if (oldpwd.equals(memberRepo.findPwdByName(name))&&newpwd1.equals(newpwd2)){
+            memberRepo.setPwd(newpwd1,name);
+        }
+
+        return "redirect:/share";
+
+    }
 
 
 

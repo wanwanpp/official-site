@@ -6,7 +6,7 @@
     <typeAliases>
         <package name="com.site.mapper"/>
     </typeAliases>
-    <mappers>
-        <mapper resource="mapper/RoleMemberMapper.xml"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--<mapper resource="mapper/RoleMemberMapper.xml"/>-->
+    <!--</mappers>-->
 </configuration>

@@ -1,28 +1,28 @@
 package com.site;
 
-import com.site.mapper.login.MemberMapper;
 import com.site.model.login.Member;
+import com.site.repository.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
-@Service
 public class MemberService implements UserDetailsService {
 
 	@Autowired
-	MemberMapper memberMapper;
+	MemberRepo memberRepo;
 
 	@Override
-	public UserDetails loadUserByUsername(String stuId) {
+	public UserDetails loadUserByUsername(String name) {
 
-		Member member= memberMapper.findByStuId(Long.valueOf(stuId));
-		if(member == null){
+		List<Member> members= memberRepo.findByName(name);
+		if(members == null){
 			throw new UsernameNotFoundException("用户名不存在");
 		}
-		return member;
+		return members.get(0);
 	}
 
 }

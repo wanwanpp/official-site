@@ -11,4 +11,5 @@ import lombok.Setter;
 public class RecordsDto {
     private String name;
     private StringBuilder totaltime;
+    private Integer buqian;
 }

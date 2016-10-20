@@ -1,13 +1,36 @@
 var app = angular.module('myApp', ['ngAnimate', 'ui.bootstrap']);
 app.controller('signDetailCtrl', function ($scope, $http) {
 
+    $scope.getData = function () {
+        var starts = $("#firstTime").val();
+        var ends = $("#lastTime").val();
+        $http({
+            method: 'post',
+            url: '/sign/getData',
+            data: {starts: starts,ends:ends}
+        }).success(function (signs) {
+            $scope.signs = signs;
+        });
+    };
+
+    $scope.buqian = function () {
+
+        var date = $("#dateselect").val();
+        $http({
+            method: 'post',
+            url: '/buqian/apply',
+            data: {name: name, number: date}
+        }).success(function () {
+            document.getElementById("buqian").setAttribute("disabled", "disabled");
+        });
+    };
 //日期插件
     $scope.today = function () {
         $scope.dt = new Date();
         $scope.dt1 = new Date();
         $scope.dt2 = new Date();
     };
-    //$scope.today();
+    $scope.today();
 
     $scope.clear = function () {
         $scope.dt = null;
@@ -81,7 +104,6 @@ app.controller('signDetailCtrl', function ($scope, $http) {
             mode = data.mode;
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -90,7 +112,6 @@ app.controller('signDetailCtrl', function ($scope, $http) {
                 }
             }
         }
-
         return '';
     }
 });

@@ -1,7 +1,6 @@
 package com.site.controller.sign;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.model.sign.ItemEntity;
 import com.site.model.sign.ResponseMessage;
 import com.site.model.sign.SignRecords;
@@ -18,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by wang0 on 2016/9/13.
@@ -53,25 +49,6 @@ public class MobileCrol {
         }
     }
 
- @RequestMapping("/getData")
- @ResponseBody
- public List<SignRecords> getData(@RequestBody String string) throws Exception{
-
-     ObjectMapper mapper = new ObjectMapper();
-     Map<String, String> map = (Map<String, String>) mapper.readValue(string, Map.class);
-     String name = map.get("name");
-     String starts = map.get("starts");
-     String ends = map.get("ends");
-
-     long start = new SimpleDateFormat("yyyy-MM-dd").parse(starts).getTime();
-     long end = new SimpleDateFormat("yyyy-MM-dd").parse(ends).getTime();
-
-     List<SignRecords> signRecordses = signRecordsRepo.queryByNameTimeDetail(name,new Timestamp(start),new Timestamp(end));
-     String total = String.valueOf(DateUtil.formatdate(signRecordsRepo.queryByNameTime(name,new Timestamp(start),new Timestamp(end))));
-     SignRecords sign = new SignRecords();
-     sign.setStrTime(total);
-     return signRecordses;
- }
 
     @RequestMapping("/todb")
     @ResponseBody

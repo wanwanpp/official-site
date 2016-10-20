@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>翼灵物联工作室</title>
+    <link rel="stylesheet" href="http://odwpzo1jp.bkt.clouddn.com/bootstrap-iotindex.css"/>
+    <link rel="stylesheet" href="http://odwpzo1jp.bkt.clouddn.com/animate.css"/>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!--<link rel="stylesheet" href="http://odwpzo1jp.bkt.clouddn.com/bootstrap-theme.css"/>-->
+    <link rel="stylesheet" href="http://odwpzo1jp.bkt.clouddn.com/style.css" media="screen"/>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://odwpzo1jp.bkt.clouddn.com/jquery.timelinr-0.9.6.js"></script>
+    <script src="http://odwpzo1jp.bkt.clouddn.com/bootstrap.min.js"></script>
+    <script src="http://odwpzo1jp.bkt.clouddn.com/jquery.singlePageNav.min.js"></script>
+    <!--<script src="http://odwpzo1jp.bkt.clouddn.com/wow.min.js"></script>-->
+    <script src="//cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+
+
+    <script type="application/javascript">
+        function login() {
+            $('#myModal').modal('show');
+        }
+
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?dfbfd5bfab390912ec3120d99a1d1db1";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+
+<!--导航-->
+<section>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand" style="padding-top:0"><img class="navbar-brand navbar-brand-left"
+                                                                            src="http://odwpzo1jp.bkt.clouddn.com/logo.png"/>
+                    <p class="navbar-brand navbar-brand-right"><font face="微软雅黑light">翼灵物联工作室</font></p></a>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" style="font-family:微软雅黑">
+                    <li class="active"><a href="#home">首页</a></li>
+                    <li onclick="member()"><a href="/嵌入式底层开发.html">团队方向</a></li>
+                    <li><a href="#timeline">团队历史</a></li>
+                    <li onclick="wenhua()"><a href="" target="_blank">团队文化</a></li>
+                    <li><a href="#ward">团队荣誉</a></li>
+                    <li onclick="chengguo()"><a href="/projects">项目成果</a></li>
+                    <li><a href="#internalOA">联系我们</a></li>
+                    <li><a href="#" onclick="login()">内部登录</a></li>
+
+                </ul>
+            </div>
+            <!--导航-->
+        </div>
+    </nav>
+
+</section>
+<script type="application/javascript">
+    function wenhua() {
+        window.open('http://www.deardull.com');
+    }
+    function chengguo() {
+        window.open('/projects.html');
+    }
+    function member() {
+        window.open('/嵌入式底层开发.html');
+    }
+
+    function awardsDetails() {
+        window.open("/awards.html");
+    }
+</script>
+<!--home-->
+<section id="home">
+    <div class="lvjing">
+        <div class="container">
+            <div class="row wow fadeInUp" data-wow-duration="1s">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <br/><br/><br/>
+                    <p><font size="25px" face="微软雅黑light">翼灵物联工作室</font></p>
+                    <p>
+                        <br/><br/>
+                    <h3>翼灵物联工作室致力于孵化人才，建设更美好的SWPU物联网专业</h3>
+                    <p>The greatest test of courage on earth is to bear defeat without losing heart.</p>
+                    </p>
+                    <br/>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--team-->
+<section id="team">
+    <div class="container" style="font-family:微软雅黑">
+        <div class="row wow fadeInUp" data-wow-duration="0.5s">
+            <div class="col-md-3">
+                <a href="嵌入式底层开发.html" target="_blank">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/Embedded.png" class="img-responsive" alt="" width="300"
+                         height="300"/>
+                    <h3>嵌入式底层开发</h3>
+                    <p>底层嵌入式开发、智能硬件学习</p>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="Android开发.html" target="_blank">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/Android.png" class="img-responsive" alt="" width="180"
+                         height="180"/>
+                    <h3>Android开发</h3>
+                    <p>Android开发技术交流、问题解决</p>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="Web开发.html" target="_blank">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/Web2.png" class="img-responsive" alt="" width="140"
+                         height="140"/>
+                    <h3>Web开发</h3>
+                    <p>讨论Web开发技术交流，技术研讨</p>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="Web前端.html" target="_blank">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/Web%E5%89%8D%E7%AB%AF.png" class="img-responsive" alt=""
+                         width="130" height="130"/>
+                    <h3>Web前端</h3>
+                    <p>以网页实战技能为基础，紧跟时代脚步</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--timer start-->
+<section class="timer">
+    <div class="container col-lg-12" style="font-family:微软雅黑;background:#222;">
+        <div id="timeline">
+            <ul id="dates">
+                <li><a href="#2013.10">
+                    <small>
+                        <small>2013.10</small>
+                    </small>
+                </a></li>
+                <li><a href="#2014.8">
+                    <small>
+                        <small>2014.8</small>
+                    </small>
+                </a></li>
+                <li><a href="#2015.8">
+                    <small>
+                        <small>2015.8</small>
+                    </small>
+                </a></li>
+                <li><a href="#2015.10">
+                    <small>
+                        <small>2015.10</small>
+                    </small>
+                </a></li>
+                <li><a href="#2015.11">
+                    <small>
+                        <small>2015.11</small>
+                    </small>
+                </a></li>
+                <li><a href="#2016.6">
+                    <small>
+                        <small>2016.6</small>
+                    </small>
+                </a></li>
+                <li><a href="#2016.7">
+                    <small>
+                        <small>2016.7</small>
+                    </small>
+                </a></li>
+                <li><a href="#2016.8">
+                    <small>
+                        <small>2016.8</small>
+                    </small>
+                </a></li>
+                <li><a href="#2016.9">
+                    <small>
+                        <small>2016.9</small>
+                    </small>
+                </a></li>
+                <li><a href="#2016.10">
+                    <small>
+                        <small>2016.10</small>
+                    </small>
+                </a></li>
+            </ul>
+            <ul id="issues">
+                <li id="2013.11">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi11.jpg" width="256" height="166"/>
+                    <h1>2013.11</h1>
+                    <p>在物联网教研室的全体教师的支持下，物联网工程专业12级李国冬同学创建翼灵物联工作室，
+                        物联网工程专业教研室主任周永老师担任指导教师。</p>
+                </li>
+                <li id="2014.8">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi2.jpg" width="256" height="166"/>
+                    <h1>2014.8</h1>
+                    <p>翼灵联工作室成员荣获第一项竞赛获奖，在武汉大学荣获TI杯全国物联网设计赛华中及西南赛区二等奖。</p>
+                </li>
+                <li id="2015.8">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi3.jpg" width="256" height="166"/>
+                    <h1>2015.8</h1>
+                    <p>翼灵物联工作室成员在武汉华中科技大学荣获TI杯全国物联网设计竞赛华中及西南赛区特等奖。<br/>
+                        翼灵物联工作室成员在无锡国际博览中心荣获TI杯全国物联网设计竞赛全国二等奖。</p>
+                </li>
+                <li id="2015.10">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi41.jpg" width="196" height="256"/>
+                    <h1>2015.10</h1>
+                    <p>翼灵物联工作室由留美教师梁宗文博士担任指导教师。</p>
+                </li>
+                <li id="2015.11">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi5.jpeg" width="256" height="166"/>
+                    <h1>2015.11</h1>
+                    <p>团队规范发展方向，形成嵌入式开发、移动端开发、WEB后端开发三大方向。</p>
+                </li>
+                <li id="2016.6">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi7.jpg" width="166" height="256"/>
+                    <h1>2016.6</h1>
+                    <p> 翼灵物联工作室成员荣获全国高校物联网应用创新大赛西南赛区一等奖。<br/>
+                        翼灵物联工作室第一届成员成员物联网工程专业12级同学光荣毕业，保研深造或入职知名IT公司。</p>
+                </li>
+                <li id="2016.7">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx3.jpg" width="256" height="196"/>
+                    <h1>2016.7</h1>
+                    <p>灵联工作室成员荣获TI杯全国物联网设计竞赛华中及西南赛区一等奖。</p>
+                </li>
+                <li id="2016.8">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi9.jpg" width="256" height="166"/>
+                    <h1>2016.8</h1>
+                    <p>翼灵物联工作室成员荣获全国大学生计算机设计大赛全国一等奖。</p>
+                </li>
+                <li id="2016.9">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi101.jpg" width="256" height="166"/>
+                    <h1>2016.9</h1>
+                    <p>翼灵物联工作室进行全方面深化改革和团队建设，组建团队第四方向WEB前端方向，
+                        上线团队招新网站并进行大规模和高质量的团队招新，推行235工作制度和严格的管理条例。
+                        团队下设纪律组长、外联组长、招新组长、财务组长进行各项日常工作推进，翼灵物联工作室正在蓬勃向上的发展。</p>
+                </li>
+                <li id="2016.10">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/hi111.png" width="256" height="166"/>
+                    <h1>2016.10</h1>
+                    <p>翼灵物联工作室官方网站上线。</p>
+                </li>
+            </ul>
+            <div id="grad_left"></div>
+            <div id="grad_right"></div>
+            <a href="#timeline" id="next">+</a>
+            <a href="#" id="prev">-</a>
+        </div>
+    </div>
+    <!--导航-->
+</section>
+
+
+<!--timer end-->
+
+<section id="ward">
+    <div class="container">
+        <div class="row wow fadeIn" data-wow-delay="0.4s" style="margin-bottom:0px">
+            <div class="col-md-12">
+                <h2>奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx1.png" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx2.jpg" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx3.jpg" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-12" style="height: 30px"></div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx4.jpg" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx5.jpg" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <img src="http://odwpzo1jp.bkt.clouddn.com/jx6.jpg" class="img-responsive" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-12 pull">
+                <div class="course" style="text-align:right">
+                    <button type="button" class="btn btn-default" onclick="awardsDetails()">查看详情</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--project-->
+
+
+<!--footer-->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form name="form" th:action="@{/}" action="/" method="POST"> <!-- 3 -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="账号"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="密码"/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="login" class="btn btn-primary">确认登录</button>
+                        <div class="pull-right">
+                            <input id="remember_me" name="remember_me" type="checkbox"/>
+                            <label for="remember_me" class="checkbox-inline">Remember me</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="internalOA">
+    <div style="background-color:#B0C4DE;background-repeat:repeat">
+        <div class="row clearfix">
+            <div class="col-md-5 column">
+                <ul class="list-unstyled" style="font-family:微软雅黑">
+                    <li class="pull-right">
+                        <h3><span class="glyphicon glyphicon-earphone"></span> 联系我们</h3>
+                    </li>
+                    <li><br/><br/><br/><br/></li>
+                    <li class="pull-right">
+                        西南石油大学·翼灵物联工作室
+                    </li>
+                    <li><br/></li>
+                    <li class="pull-right">
+                        工作室地址：明理楼B403
+                    </li>
+                    <li><br/></li>
+                    <li class="pull-right">
+                        联系电话：18280435703
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 column">
+            </div>
+            <div class="col-md-5 column">
+                <ul class="list-unstyled" style="font-family:微软雅黑">
+                    <li class="pull-left">
+                        <h3>友情链接 <span class="glyphicon glyphicon-paperclip"></span></h3>
+                    </li>
+                    <li><br/><br/><br/><br/></li>
+                    <li class="pull-left">
+                        <a href="http://www.swpu.edu.cn/" style="text-decoration:none;" target="_blank">西南石油大学门户网站</a>
+                    </li>
+                    <li><br/></li>
+                    <li class="pull-left">
+                        <a href="http://scs.swpu.edu.cn/" style="text-decoration:none;"
+                           target="_blank">西南石油大学计算机科学学院</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="height: 70px"></div>
+    </div>
+
+</section>
+
+<script>
+    $(function () {
+        /*导航跳转效果插件*/
+        $('.nav').singlePageNav({
+            offset: 70
+        });
+        /*小屏幕导航点击关闭菜单*/
+        $(".navbar-collapse a").click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+        new WOW().init();
+    });
+    $(function () {
+        $().timelinr({
+            autoPlay: 'true',
+            autoPlayDirection: 'forward'
+        })
+    });
+</script>
+
+</body>
+</html>

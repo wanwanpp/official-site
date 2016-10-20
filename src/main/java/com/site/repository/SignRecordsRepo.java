@@ -47,6 +47,8 @@ public interface SignRecordsRepo extends JpaRepository<SignRecords,Long> {
 //     * @return
 //     */
 
+    List<SignRecords> findByLeaveTimeIsNull();
+
     @Query("select s from SignRecords s where s.name=?1 order by id desc")
     List<SignRecords> selectDesc(String name);
 

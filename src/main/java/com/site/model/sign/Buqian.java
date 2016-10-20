@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * Created by wang0 on 2016/9/23.
@@ -20,9 +21,16 @@ public class Buqian {
     private Long id;
     private String name;
     private String date;
+    private Timestamp createTime;
+    private Integer status;
 
     public Buqian(String name,String date) {
         this.date = date;
         this.name = name;
+        this.createTime = new Timestamp(System.currentTimeMillis());
+        this.status=0;
+    }
+
+    public Buqian() {
     }
 }

@@ -2,6 +2,7 @@ package com.site.controller.sign;
 
 import com.site.dtos.RecordsDto;
 import com.site.model.sign.SignRecords;
+import com.site.repository.BuqianRepo;
 import com.site.repository.MemberRepo;
 import com.site.repository.SignRecordsRepo;
 import com.site.utils.DateUtil;
@@ -11,6 +12,7 @@ import jxl.write.*;
 import jxl.write.Number;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,7 @@ import java.util.List;
 @Controller
 @Slf4j
 @RequestMapping("/excelout")
+@PreAuthorize("hasAnyAuthority('SUPER_ADMIN')")
 public class ExcelOutCrol {
 
     @Autowired
@@ -37,7 +40,13 @@ public class ExcelOutCrol {
     @Autowired
     private MemberRepo memberRepo;
 
-    
+    @Autowired
+    private BuqianRepo buqianRepo;
+
+    @RequestMapping("")
+    public String showpage(){
+        return "excelout";
+    }
 
     @RequestMapping("/excel")
     @ResponseBody
@@ -69,6 +78,9 @@ public class ExcelOutCrol {
             recordsDto.setName(name);
             Long time = signRecordsRepo.queryByNameTime(name, new Timestamp(start), new Timestamp(end));
             System.out.println(time);
+            Integer buqian = buqianRepo.findAllBuqian(new Timestamp(start), new Timestamp(end),name);
+            System.out.println(buqian);
+            recordsDto.setBuqian(buqian);
             if (time != null) {
                 StringBuilder strtime = DateUtil.formatdate(time);
                 recordsDto.setTotaltime(strtime);
@@ -85,6 +97,9 @@ public class ExcelOutCrol {
                         recordsDto.setName(string);
                         Long time = signRecordsRepo.queryByNameTime(string, new Timestamp(start), new Timestamp(end));
                         System.out.println(time);
+                        Integer buqian = buqianRepo.findAllBuqian(new Timestamp(start), new Timestamp(end),name);
+                        System.out.println(buqian);
+                        recordsDto.setBuqian(buqian);
                         if (time != null) {
                             StringBuilder strtime = DateUtil.formatdate(time);
                             recordsDto.setTotaltime(strtime);
@@ -102,6 +117,9 @@ public class ExcelOutCrol {
                             RecordsDto recordsDto = new RecordsDto();
                             recordsDto.setName(string);
                             Long time = signRecordsRepo.queryByNameTime(string, new Timestamp(start), new Timestamp(end));
+                            Integer buqian = buqianRepo.findAllBuqian(new Timestamp(start), new Timestamp(end),name);
+                            System.out.println(buqian);
+                            recordsDto.setBuqian(buqian);
                             if (time != null) {
                                 StringBuilder strtime = DateUtil.formatdate(time);
                                 recordsDto.setTotaltime(strtime);
@@ -119,6 +137,9 @@ public class ExcelOutCrol {
                             RecordsDto recordsDto = new RecordsDto();
                             recordsDto.setName(string);
                             Long time = signRecordsRepo.queryByNameTime(string, new Timestamp(start), new Timestamp(end));
+                            Integer buqian = buqianRepo.findAllBuqian(new Timestamp(start), new Timestamp(end),name);
+                            System.out.println(buqian);
+                            recordsDto.setBuqian(buqian);
                             if (time != null) {
                                 StringBuilder strtime = DateUtil.formatdate(time);
                                 recordsDto.setTotaltime(strtime);
@@ -151,10 +172,12 @@ public class ExcelOutCrol {
         Label lab_01 = new Label(0, 1, "序号", cloumnTitleFormat);
         Label lab_11 = new Label(1, 1, "姓名", cloumnTitleFormat);
         Label lab_21 = new Label(2, 1, "签到总时间", cloumnTitleFormat);
+        Label lab_31 = new Label(3, 1, "补签次数", cloumnTitleFormat);
 
         sheet.addCell(lab_01);
         sheet.addCell(lab_11);
         sheet.addCell(lab_21);
+        sheet.addCell(lab_31);
 
 
         int j = 0;
@@ -162,6 +185,8 @@ public class ExcelOutCrol {
             sheet.addCell(new Number(0, index, j + 1));
             sheet.addCell(new Label(1, index, dtos.get(j).getName()));
             sheet.addCell(new Label(2, index, String.valueOf(dtos.get(j).getTotaltime())));
+            String buqiannumber = String.valueOf(dtos.get(j).getBuqian())+"次";
+            sheet.addCell(new Label(3, index,buqiannumber));
             j++;
         }
         wk.write();

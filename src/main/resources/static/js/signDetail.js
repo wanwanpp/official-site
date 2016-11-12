@@ -20,8 +20,9 @@ app.controller('signDetailCtrl', function ($scope, $http) {
             method: 'post',
             url: '/buqian/apply',
             data: {name: name, number: date}
-        }).success(function () {
+        }).success(function (message) {
             document.getElementById("buqian").setAttribute("disabled", "disabled");
+            $scope.message=message;
         });
     };
 //日期插件

@@ -2,7 +2,6 @@ package com.site.controller.sign;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.model.login.Member;
-import com.site.model.sign.Buqian;
 import com.site.model.sign.SignRecords;
 import com.site.repository.BuqianRepo;
 import com.site.repository.MemberRepo;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -139,7 +137,7 @@ public class SignCrol {
         if (leaveTimeStamp.getDate()-comeTimeStamp.getDate()!=0){
             signRecordsRepo.delete(id);
             memberRepo.setIsEnd(name);
-            return name+"此次通宵签到作废";
+            return name+"此次通宵签到无效";
         }
         Long totalTime = leaveTimeStamp.getTime() - cometime;
         if (totalTime > 6 * 60 * 60 * 1000) {
@@ -158,30 +156,4 @@ public class SignCrol {
 
     }
 
-    @RequestMapping(value = "/buqian", produces = "application/text")
-    public String buqian(@RequestBody String string) throws IOException {
-
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> map = (Map<String, String>) mapper.readValue(string, Map.class);
-        String name = getCurrentUsername();
-        String number = map.get("number");
-
-
-        Buqian buqian = new Buqian(name, number + "小时");
-
-        System.out.println(number);
-        System.out.println(name);
-        SignRecords signRecords = new SignRecords();
-        signRecords.setName(name);
-        signRecords.setComeTime(new Timestamp(System.currentTimeMillis()));
-        signRecords.setLeaveTime(new Timestamp(System.currentTimeMillis()));
-        Long totalMill = Long.valueOf(Integer.parseInt(number) * 3600 * 1000);
-        signRecords.setTotalMill(totalMill);
-        signRecords.setStrTime(String.valueOf(DateUtil.formatdate(totalMill)));
-
-        buqianRepo.save(buqian);
-        signRecordsRepo.save(signRecords);
-
-        return "redirect:/signDetail";
-    }
 }

@@ -38,7 +38,7 @@ public class BuqianCrol {
 
     @RequestMapping(value = "/apply ", produces = "application/text")
     @ResponseBody
-    public void apply(@RequestBody String string) throws IOException {
+    public String apply(@RequestBody String string) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
         Map<String, String> map = (Map<String, String>) mapper.readValue(string, Map.class);
@@ -47,8 +47,11 @@ public class BuqianCrol {
 
         Buqian buqian = new Buqian(name, number + "小时");
 
-        buqianRepo.save(buqian);
-//        return "signDetail";
+        if (buqianRepo.save(buqian)!=null){
+            return "申请成功";
+        }else {
+            return "申请失败";
+        }
     }
 
     @RequestMapping("/showReviewPage")

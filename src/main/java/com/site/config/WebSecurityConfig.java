@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/").defaultSuccessUrl("/signDetail", true)
                 .failureUrl("/").permitAll()
-                .and().rememberMe().key("swpuiot").tokenValiditySeconds(86400).rememberMeParameter("remember_me")
+                .and().rememberMe().key("swpuiot").tokenValiditySeconds(86400).rememberMeParameter("swpuiot")
                 .and().logout().logoutSuccessUrl("/").permitAll()
                 .and().csrf().disable(); //6
     }

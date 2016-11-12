@@ -50,7 +50,6 @@ public class Member implements UserDetails { //1
         List<Roles> roles= this.getRoles();
         for(Roles role:roles){
             auths.add(new SimpleGrantedAuthority(role.getMark()));
-            System.out.println(role.getMark());
         }
         return auths;
     }
